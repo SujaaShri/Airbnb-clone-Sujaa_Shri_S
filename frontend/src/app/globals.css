@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+:root {
+  --airbnb-brand: #FF385C;
+  --airbnb-brand-hover: #E00B41;
+  --airbnb-dark: #222222;
+  --airbnb-gray: #717171;
+  --airbnb-light: #F7F7F7;
+  --airbnb-border: #EBEBEB;
+  --airbnb-border-dark: #DDDDDD;
+  --airbnb-gradient: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  --airbnb-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  --airbnb-shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.15);
+  --airbnb-shadow-modal: 0 16px 40px rgba(0, 0, 0, 0.22);
+}
+
+body {
+  color: var(--airbnb-dark);
+  background-color: #FFFFFF;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbars */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Airbnb Brand Gradient Button */
+.btn-airbnb-gradient {
+  background: var(--airbnb-gradient);
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+.btn-airbnb-gradient:hover {
+  opacity: 0.95;
+}
+.btn-airbnb-gradient:active {
+  transform: scale(0.98);
+}
+
+/* Airbnb Card Image Transition */
+.listing-card-img {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.listing-card:hover .listing-card-img {
+  transform: scale(1.04);
+}
+
+/* Map Price Marker Pill */
+.map-price-pill {
+  background-color: #ffffff;
+  color: #222222;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 24px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.map-price-pill:hover, .map-price-pill.active {
+  background-color: #222222;
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* Smooth fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.animate-modal {
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Earth / Globe Rotation: spins horizontally like Earth rotates */
+@keyframes earthRotateLikeGlobe {
+  0% {
+    transform: perspective(600px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(600px) rotateY(-360deg);
+  }
+}
+
+.animate-earth-anticlockwise {
+  animation: earthRotateLikeGlobe 2.5s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* House Playful Shake Animation (rather than rotating) */
+@keyframes housePlayfulShake {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  15% {
+    transform: translateY(-2px) rotate(-7deg) scale(1.06);
+  }
+  30% {
+    transform: translateY(-3px) rotate(7deg) scale(1.08);
+  }
+  45% {
+    transform: translateY(-2px) rotate(-5deg) scale(1.06);
+  }
+  60% {
+    transform: translateY(-1px) rotate(4deg) scale(1.04);
+  }
+  75% {
+    transform: translateY(0) rotate(-2deg) scale(1.02);
+  }
+  90% {
+    transform: translateY(0) rotate(1deg) scale(1.01);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+.animate-house-rotate {
+  animation: housePlayfulShake 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 1 forwards;
+  will-change: transform;
+  transform-origin: center bottom;
+}
+
+/* Parachute Smooth Jump */
+@keyframes parachuteJump {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-12px) scale(1.08) rotate(3deg);
+  }
+  50% {
+    transform: translateY(-16px) scale(1.1) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(-5px) scale(1.03) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+.animate-parachute-jump {
+  animation: parachuteJump 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 1 forwards;
+  will-change: transform;
+  transform-origin: center bottom;
+}
+
+/* Bell Ringing Shake */
+@keyframes bellRing {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-14deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-8deg); }
+  75% { transform: rotate(4deg); }
+  90% { transform: rotate(-2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-bell-ring {
+  animation: bellRing 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+  will-change: transform;
+  transform-origin: center bottom;
+}
+
+/* Hide Next.js Dev Indicator badge in bottom-left corner */
+nextjs-portal,
+[data-nextjs-toast],
+[data-nextjs-dev-tools-button],
+[data-nextjs-dev-indicator],
+div[data-nextjs-dialog-overlay],
+#next-logo,
+#__next-build-watcher,
+div:has(> svg > path[d*="M16 8"]) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
